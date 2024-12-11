@@ -1,8 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import DataTable, {TableColumn} from "react-data-table-component";
-// @ts-expect-error this is a js file, so customStyle will be of type any
-import {customStyles} from "../TableTheme.js";
+import {customStyles} from "../TableTheme.tsx";
 
 interface Props {
   data: DataRow[];
@@ -70,7 +69,7 @@ const columns: TableColumn<DataRow>[] = [
     sortable: true,
     width: "120px",
     center: true,
-    format: (row, idx) => row.date.split("T")[0],
+    format: (row) => row.date.split("T")[0],
   },
   {
     name: "Comment",

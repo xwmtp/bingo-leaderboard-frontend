@@ -1,4 +1,4 @@
-import { createTheme } from "react-data-table-component";
+import {createTheme, TableStyles} from "react-data-table-component";
 
 createTheme("bingo", {
   text: {
@@ -26,7 +26,7 @@ createTheme("bingo", {
   },
 });
 
-export const customStyles = {
+export const customStyles: TableStyles = {
   header: {
     style: {
       justifyContent: "center",

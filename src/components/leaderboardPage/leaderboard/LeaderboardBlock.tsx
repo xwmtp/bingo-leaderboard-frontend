@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import DataTable, { TableColumn, TableProps } from "react-data-table-component";
+import DataTable, {TableColumn, TableProps} from "react-data-table-component";
 import ReactTimeAgo from "react-time-ago";
-import { customStyles } from "../TableTheme.js";
+import {customStyles} from "../TableTheme.tsx";
 
 interface Props {
   data: DataRow[];
@@ -18,7 +18,7 @@ interface DataRow {
   finishedRacesFraction: string;
 }
 
-export const LeaderboardBlock: React.FC<Props> = ({ data, onRowClick }) => {
+export const LeaderboardBlock: React.FC<Props> = ({data, onRowClick}) => {
   return (
     <LeaderboardDiv id="leaderboard-div">
       <TableDiv>
@@ -37,7 +37,7 @@ export const LeaderboardBlock: React.FC<Props> = ({ data, onRowClick }) => {
   );
 };
 
-const Title: React.FC<{ title: string }> = ({ title }) => {
+const Title: React.FC<{title: string}> = ({title}) => {
   return <TitleDiv>{title}</TitleDiv>;
 };
 

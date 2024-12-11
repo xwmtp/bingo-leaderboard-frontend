@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import React, {useEffect, useState} from "react";
-import "./TableTheme.js";
+import "./TableTheme.tsx";
 import {PlayerBlock} from "./player/PlayerBlock";
 import {LeaderboardBlock} from "./leaderboard/LeaderboardBlock";
 import {
@@ -14,7 +14,6 @@ interface Props {
 }
 
 export const LeaderboardPage: React.FC<Props> = ({leaderboardData}) => {
-  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [playerData, setPlayerData] = useState<BingoLeaderboardPlayers>([]);
   const [selectedPlayerName, setSelectedPlayerName] = useState<string | undefined>(undefined);
 
@@ -23,8 +22,7 @@ export const LeaderboardPage: React.FC<Props> = ({leaderboardData}) => {
       .then((playerData) => {
         setPlayerData(playerData);
       })
-      .catch((error) => console.error(error))
-      .finally(() => setIsLoading(false));
+      .catch((error) => console.error(error));
   }, []);
 
   const playerTableData =
