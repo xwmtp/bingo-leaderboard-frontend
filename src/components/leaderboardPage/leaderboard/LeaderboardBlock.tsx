@@ -83,7 +83,7 @@ const columns: TableColumn<DataRow>[] = [
     width: "50px",
     compact: true,
     sortable: true,
-    format: (row, idx) => <ReactTimeAgo date={new Date(row.lastRaced)} timeStyle="mini-minute" />,
+    format: (row) => <ReactTimeAgo date={new Date(row.lastRaced)} timeStyle="mini-minute" />,
     hide: 1300,
     right: true,
   },
