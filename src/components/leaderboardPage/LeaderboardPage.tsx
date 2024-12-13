@@ -1,32 +1,26 @@
 import styled from "styled-components";
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import "./TableTheme.tsx";
 import {PlayerBlock} from "./player/PlayerBlock";
 import {LeaderboardBlock} from "./leaderboard/LeaderboardBlock";
-import {
-  BingoLeaderboard,
-  BingoLeaderboardPlayers,
-} from "../../service/dataModels/bingoLeaderboardModels";
+import {BingoLeaderboard} from "../../service/dataModels/bingoLeaderboardModels";
 import {getBingoPlayers} from "../../service/bingoLeaderboardApi";
+import {useQuery} from "@tanstack/react-query";
 
 interface Props {
   leaderboardData?: BingoLeaderboard;
 }
 
 export const LeaderboardPage: React.FC<Props> = ({leaderboardData}) => {
-  const [playerData, setPlayerData] = useState<BingoLeaderboardPlayers>([]);
   const [selectedPlayerName, setSelectedPlayerName] = useState<string | undefined>(undefined);
 
-  useEffect(() => {
-    getBingoPlayers()
-      .then((playerData) => {
-        setPlayerData(playerData);
-      })
-      .catch((error) => console.error(error));
-  }, []);
+  const {data: playerData} = useQuery({
+    queryKey: ["getBingoPlayers"],
+    queryFn: () => getBingoPlayers(),
+  });
 
   const playerTableData =
-    playerData.length > 0 && selectedPlayerName !== undefined
+    playerData && playerData.length > 0 && selectedPlayerName !== undefined
       ? playerData.find((player) => player.name === selectedPlayerName)
       : undefined;
 
