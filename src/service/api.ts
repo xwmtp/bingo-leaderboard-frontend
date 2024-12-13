@@ -11,8 +11,5 @@ export async function fetchData(url: string) {
     throw Error(`Error occurred while fetching url ${url}: ${response.statusText}`);
   }
 
-  const x = response.json();
-  console.log(JSON.stringify(x, null, 1));
-
-  return x;
+  return response.json();
 }

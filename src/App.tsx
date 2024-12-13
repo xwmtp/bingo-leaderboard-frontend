@@ -21,7 +21,7 @@ export function App() {
         setLeaderboardData(undefined);
         console.error(error);
       });
-  });
+  }, []);
 
   const timestamp = leaderboardData === undefined ? undefined : leaderboardData.lastUpdated;
 
